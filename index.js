@@ -30,7 +30,7 @@ async function run() {
     app.get('/tourorders', async(req, res) =>{
         const cursor = tourordersCollection.find({});
         const tourorders = await cursor.toArray();
-        res.send(tourorders);
+        res.json(tourorders);
     });
 
     // get single API
