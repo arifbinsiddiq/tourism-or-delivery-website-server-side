@@ -48,7 +48,7 @@ async function run() {
         console.log('hit the post api', tourorders)
         
     const result = await tourordersCollection.insertOne(tourorders);
-    res.json(result);
+    res.send(result);
     // res.send('post hited')
     })
 
@@ -57,14 +57,14 @@ async function run() {
     app.get('/bookingusers', async(req, res) =>{
         const cursor = bookingusersCollection.find({});
         const bookingusers = await cursor.toArray();
-        res.send(bookingusers);
+        res.json(bookingusers);
     });
 
     // get my tour api
     app.get('/bookingusers/:email', async (req, res) => {
         const cursor = bookingusersCollection.find({email: req.params.email});
         const bookingusers = await cursor.toArray();
-        res.send(bookingusers);
+        res.json(bookingusers);
     })
 
     // bookingusers post api
@@ -72,7 +72,7 @@ async function run() {
         const bookingusers = req.body;
         console.log('hit the booking api', bookingusers)
         const result = await bookingusersCollection.insertOne(bookingusers);
-        res.json(result);
+        res.send(result);
     })
 
 
